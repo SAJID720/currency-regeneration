@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-M" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Khan Currency Creator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Dancing+Script:wght@400;700&family=Orbitron:wght@400;700&family=UnifrakturMaguntia&display=swap');
+
+      .holographic-effect {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .holographic-effect::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          124deg,
+          hsla(170, 70%, 65%, 0.3) 0%,
+          hsla(220, 70%, 65%, 0.3) 20%,
+          hsla(290, 70%, 65%, 0.3) 40%,
+          hsla(20, 70%, 65%, 0.3) 60%,
+          hsla(50, 70%, 65%, 0.3) 80%,
+          hsla(170, 70%, 65%, 0.3) 100%
+        );
+        background-size: 200% 200%;
+        mix-blend-mode: overlay;
+        opacity: 0;
+        animation: holographic-shimmer 7s infinite ease-in-out;
+        pointer-events: none;
+      }
+
+      @keyframes holographic-shimmer {
+        0% {
+          background-position: 100% 0%;
+          opacity: 0.4;
+        }
+        50% {
+          background-position: 0% 100%;
+          opacity: 0.8;
+        }
+        100% {
+          background-position: 100% 0%;
+          opacity: 0.4;
+        }
+      }
+      
+      /* Tooltip Styles */
+      [data-tooltip] {
+        position: relative;
+        cursor: help;
+      }
+      [data-tooltip]::before,
+      [data-tooltip]::after {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+        pointer-events: none;
+        z-index: 20;
+      }
+      [data-tooltip]::before {
+        content: attr(data-tooltip);
+        background-color: #1f2937; /* bg-gray-800 */
+        color: #d1d5db; /* text-gray-300 */
+        padding: 6px 10px;
+        border-radius: 6px;
+        font-size: 0.875rem; /* text-sm */
+        line-height: 1.25rem;
+        white-space: pre-wrap;
+        width: max-content;
+        max-width: 250px;
+        bottom: calc(100% + 8px);
+        text-align: center;
+      }
+      [data-tooltip]::after {
+        content: '';
+        border-style: solid;
+        border-width: 5px;
+        border-color: #1f2937 transparent transparent transparent;
+        bottom: calc(100% + 3px);
+      }
+      [data-tooltip]:hover::before,
+      [data-tooltip]:hover::after {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      .banknote-image {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.29.0"
+  }
+}
+</script>
+</head>
+  <body class="bg-gray-900 text-white">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

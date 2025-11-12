@@ -1,0 +1,5 @@
+{
+  "name": "Khan Currency Creator",
+  "description": "Design and generate your own custom 'Khan' currency banknotes using AI. Specify denomination, color, motifs, and more to create a unique banknote image.",
+  "requestFramePermissions": []
+}
